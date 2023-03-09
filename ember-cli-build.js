@@ -1,10 +1,33 @@
 'use strict';
 
 const EmberApp = require('ember-cli/lib/broccoli/ember-app');
+//postcss + plugins
+const PostcssImport = require('postcss-import');
+const PostcssNested = require('postcss-nested');
+const Autoprefixer = require('autoprefixer');
+const Tailwindcss = require('tailwindcss');
+let cssModulesPlugins = [
+  PostcssImport({ path: ['node_modules'], filter: (url) => url !== 'custom-tippy-elements.css' }),
+  Tailwindcss('./tailwind.config.js'),
+  PostcssNested,
+  Autoprefixer({
+    overrideBrowserslist: require('./config/targets').browsers,
+  }),
+];
+
+
+
 
 module.exports = function (defaults) {
   const app = new EmberApp(defaults, {
-    // Add options here
+    postcssOptions: {
+      compile: {
+        plugins: [Autoprefixer, Tailwindcss('./tailwind.config.js')],
+      },
+    },
+    cssModules: {
+      plugins: cssModulesPlugins,
+    },
   });
 
   // Use `app.import` to add additional libraries to the generated

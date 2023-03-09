@@ -1,8 +1,9 @@
-<div class="rentals">
-  <label>
-    <span>Where would you like to stay?</span>
-    <Input @value={{this.query}} class="light" />
+  <div class="flex items-center justify-center">
+  <label class="m-4">
+    <span class="text-3xl © font-semibold">Where would you like to stay?</span>
+    <Input @value={{this.query}} class="border-black border-2 rounded-md border-solid" />
   </label>
+  </div>
   <ul class="results">
     <Rentals::Filter @rentals={{@rentals}} @query={{this.query}} as |results|>
       {{#each results as |rental|}}
@@ -10,4 +11,3 @@
       {{/each}}
     </Rentals::Filter>
   </ul>
-</div>

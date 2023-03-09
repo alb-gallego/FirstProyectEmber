@@ -1,25 +1,41 @@
-<article class="rental">
-  <Rental::Image
-    src={{@rental.image}}
-    alt="A picture of {{@rental.title}}"
-  />
-  <div class="details">
-    <h3>
-      <LinkTo @route="rental" @model={{@rental}}>
-        {{@rental.title}}
-      </LinkTo>
-    </h3>
-    <div class="detail owner">
-      <span>Owner:</span> {{@rental.owner}}
-    </div>
-    <div class="detail type">
-      <span>Type:</span> {{@rental.type}}
-    </div>
-    <div class="detail location">
-      <span>Location:</span> {{@rental.city}}
-    </div>
-    <div class="detail bedrooms">
-      <span>Number of bedrooms:</span> {{@rental.bedrooms}}
-    </div>
+<div
+  class="p-5 drop-shadow-lg duration-700 hover:skew-y-12 text-center bg-slate-100 m-5 rounded-xl flex flex-wrap"
+>
+  <div class="static ">
+    <Rental::Image src={{@rental.image}} alt="A picture of {{@rental.title}}" />
   </div>
-</article>
+  <div class="grid grid-rows-2 align-middle place-content-between">
+    <div class="flex items-center justify-center">
+      <h3 class="text-3xl font-semibold">
+        <LinkTo @route="rental" @model={{@rental}}>
+          {{@rental.title}}
+        </LinkTo>
+      </h3>
+    </div>
+
+    <div class="grid grid-cols-2 place-items-center">
+      <div class="detail">
+        <div>
+          <span>Owner:</span>
+          {{@rental.owner}}
+        </div>
+        <div>
+          <span>Type:</span>
+          {{@rental.type}}
+        </div>
+      </div>
+      <div class="detail">
+          <div>
+            <span>Location:</span>
+            {{@rental.city}}
+          </div>
+          <div>
+            <span>Number of bedrooms:</span>
+            {{@rental.bedrooms}}
+          </div>
+</div>
+
+
+
+    </div></div>
+</div>
