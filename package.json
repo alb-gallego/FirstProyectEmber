@@ -104,9 +104,6 @@
   },
   "ember": {
     "edition": "octane"
-  },
-  "dependencies": {
-    "blueprint": "^2.1.5",
-    "ember-cli-typescript-blueprints": "^3.0.0"
   }
+
 }
