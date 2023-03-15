@@ -596,10 +596,6 @@ video {
   max-width: 100%;
 }
 
-.max-w-lg {
-  max-width: 32rem;
-}
-
 .cursor-zoom-in {
   cursor: zoom-in;
 }
