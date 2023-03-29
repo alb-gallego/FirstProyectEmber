@@ -104,6 +104,10 @@
   },
   "ember": {
     "edition": "octane"
+  },
+  "dependencies": {
+    "ember-cli-typescript-blueprints": "^3.0.0",
+    "pg": "^8.10.0",
+    "postgres": "^3.3.4"
   }
-
 }

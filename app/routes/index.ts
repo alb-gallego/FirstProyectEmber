@@ -1,10 +1,13 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
+import rental, { Rental } from './rental';
 
 
 export default class IndexRoute extends Route {
-  @service store;
+  @service declare store:any;
   async model() {
-    return this.store.findAll('rental');
+
+    let res:Promise<Rental[]> = this.store.findAll();
+    return res;
   }
 }

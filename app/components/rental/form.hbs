@@ -1,0 +1,42 @@
+
+<form {{on "submit" this.sendRental}}>
+  <label class="m-4 flex justify-center items-center" >
+    <span class="text-3xl  font-semibold">Image:</span>
+    <input type="url" class="border-black border-2 rounded-md text-center border-solid" name="image"
+    placeholder="Image URL">
+  </label>
+  <label class="m-4 flex justify-center items-center" >
+    <span class="text-3xl  font-semibold">Title:</span>
+    <input type="text" class="border-black border-2 rounded-md text-center border-solid" name="title"
+    placeholder="Title"  {{on "change" this.checkImage}}>
+  </label>
+  <label class="m-4 flex justify-center items-center" >
+    <span class="text-3xl  font-semibold">Owner:</span>
+    <input type="text" class="border-black border-2 rounded-md text-center border-solid" name="owner"
+    placeholder="Owner">
+  </label>
+  <label class="m-4 flex justify-center items-center" >
+    <span class="text-3xl  font-semibold">City:</span>
+    <input type="text" class="border-black border-2 rounded-md text-center border-solid" name="city"
+    placeholder="City">
+  </label>
+  <label class="m-4 flex justify-center items-center" >
+    <span class="text-3xl  font-semibold">Category:</span>
+    <select name="category" id="">
+      <option value="Community" selected>Community</option>
+      <option value="Standalone">Standalone</option>
+    </select>
+  </label>
+  <label class="m-4 flex justify-center items-center" >
+    <span class="text-3xl  font-semibold">Bedrooms:</span>
+    <input type="text" class="border-black border-2 rounded-md text-center border-solid" name="bedrooms"
+    placeholder="Bedrooms">
+  </label>
+  <label class="m-4 flex justify-center items-center" >
+    <span class="text-3xl  font-semibold">Description:</span>
+    <input type="text" class="border-black border-2 rounded-md text-center border-solid"
+    placeholder="Description" >
+  </label>
+<button type="submit"  >CREAR</button>
+
+</form>

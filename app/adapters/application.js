@@ -6,4 +6,8 @@ export default class ApplicationAdapter extends JSONAPIAdapter {
   buildURL(...args) {
     return `${super.buildURL(...args)}.json`;
   }
+
+  /**  host = 'http://localhost:3000';
+
+  namespace = 'rentals'; */
 }

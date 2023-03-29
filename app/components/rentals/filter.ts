@@ -12,7 +12,7 @@ export default class RentalsFilterComponent extends Component<RentalsFilterArgs>
     let { rentals, query } = this.args;
 
     if (query) {
-      rentals = rentals.filter((rental:Rental) => rental.attributes.title.includes(query));
+      rentals = rentals.filter((rental:Rental) => rental.title.includes(query));
     }
 
     return rentals;
