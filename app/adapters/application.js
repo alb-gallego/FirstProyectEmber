@@ -1,13 +1,12 @@
 import JSONAPIAdapter from '@ember-data/adapter/json-api';
+import { pluralize } from 'ember-inflector';
 
 export default class ApplicationAdapter extends JSONAPIAdapter {
-  namespace = 'api';
 
-  buildURL(...args) {
-    return `${super.buildURL(...args)}.json`;
-  }
 
-  /**  host = 'http://localhost:3000';
-
-  namespace = 'rentals'; */
+  host = 'http://localhost:3000';
+/*
+  pathForType(type) {
+    return pluralize(type);
+  }*/
 }

@@ -2,27 +2,26 @@ import Route from '@ember/routing/route';
 import { service } from '@ember/service';
 //import { service } from '@ember/service';
 
-
-  export interface Rental{
-      id: string,
-
-        title: string,
-        owner: string,
-        city: string,
-        category: string,
-        bedrooms: number,
-        image: string,
-      description:string
-    }
-
+export interface Rental {
+  id: string;
+  title: string;
+  owner: string;
+  city: string;
+  category: string;
+  bedrooms: number;
+  image: string;
+  description: string;
+}
 
 export default class RentalRoute extends Route {
-  @service  declare store:any;
+  @service declare store: any;
 
-  async model(params: { rental_id: string; }) {
-
-    return this.store.findRecord('rental', params.rental_id);
+  async model(params: { rental_id: string }) {
+    const res = await this.store.findRecord('rental', params.rental_id);
+    console.log(res);
+    return res;
   }
+
   /*async model():Promise<Rental[]>{
     const response = await fetch("/api/rentals.json");
 
@@ -30,11 +29,9 @@ export default class RentalRoute extends Route {
     console.log('hola');
     return response.json();
   }*/
+}
 
-
-  }
-
-  /*@service declare store:any;
+/*@service declare store:any;
   async model() {
 
     const res = fetch('http://localhost:3000/rentals', {

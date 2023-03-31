@@ -1,12 +1,20 @@
 import { action } from '@ember/object';
+import { service } from '@ember/service';
 import { typeOf } from '@ember/utils';
 import Component from '@glimmer/component';
 
-interface RentalFormArgs {
-
-}
+interface RentalFormArgs {}
 
 export default class RentalForm extends Component<RentalFormArgs> {
+  @service store: any;
+
+  checkImage(formValue: string) {
+    if (formValue && formValue.length < 5) {
+      console.log('El titulo debe tener más de 5 caracteres.');
+      //return true;
+    }
+  }
+
   @action
   sendRental(event: Event) {
     event.preventDefault();
@@ -20,6 +28,22 @@ export default class RentalForm extends Component<RentalFormArgs> {
       }
     });
 
+    let post = this.store.createRecord('rental', {
+      title: formValues['title'],
+      image: formValues['image'],
+      owner: formValues['owner'],
+      city: formValues['city'],
+      category: formValues['category'],
+      bedrooms: formValues['bedrooms'],
+      description: formValues['description'],
+
+    });
+    console.log(post);
+
+    post.save();
+  }
+}
+/*
     //Transforms the key:values form(string) in JSON data
     const jsonData = JSON.stringify(formValues);
     console.log(jsonData);
@@ -47,22 +71,4 @@ export default class RentalForm extends Component<RentalFormArgs> {
 
 
     //console.log(formValues);
-  }
-
-
-
-
-checkImage(formValue:string){
-
-
-  if(formValue && formValue.length < 5){
-    console.log('El titulo debe tener más de 5 caracteres.')
-    //return true;
-  }
-
-}
-
-
-}
-
-
+ */
