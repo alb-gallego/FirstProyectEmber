@@ -16,8 +16,8 @@ export interface Rental {
 export default class RentalRoute extends Route {
   @service declare store: any;
 
-  async model(params: { rental_id: string }) {
-    const res = await this.store.findRecord('rental', params.rental_id);
+   model(params: { rental_id: string }) {
+    const res = this.store.findRecord('rental', params.rental_id);
     console.log(res);
     return res;
   }

@@ -1,12 +1,13 @@
 import { action } from '@ember/object';
+import Router from '@ember/routing/router';
 import { service } from '@ember/service';
-import { typeOf } from '@ember/utils';
 import Component from '@glimmer/component';
 
-interface RentalFormArgs {}
 
-export default class RentalForm extends Component<RentalFormArgs> {
+
+export default class RentalForm extends Component {
   @service store: any;
+  @service router!: Router; // Agrega la propiedad router
 
   checkImage(formValue: string) {
     if (formValue && formValue.length < 5) {
@@ -38,9 +39,11 @@ export default class RentalForm extends Component<RentalFormArgs> {
       description: formValues['description'],
 
     });
-    console.log(post);
+    console.log();
 
-    post.save();
+    post.save().then(()=>{this.router.transitionTo('index')});
+
+
   }
 }
 /*

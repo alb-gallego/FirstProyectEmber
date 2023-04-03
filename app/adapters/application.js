@@ -5,6 +5,10 @@ export default class ApplicationAdapter extends JSONAPIAdapter {
 
 
   host = 'http://localhost:3000';
+  headers = {
+    'Content-Type': 'application/json'
+  };
+
 /*
   pathForType(type) {
     return pluralize(type);
