@@ -1,7 +1,7 @@
 <div
   class="p-5 drop-shadow-lg duration-700 hover:skew-y-12 text-center bg-slate-100 m-5 rounded-xl flex flex-wrap"
 >
-  <div class="static ">
+  <div class="static">
     <Rental::Image src={{@rental.image}} alt="A picture of {{@rental.title}}" />
   </div>
   <div class="grid grid-rows-2 align-middle place-content-between">
@@ -25,17 +25,16 @@
         </div>
       </div>
       <div class="detail">
-          <div>
-            <span>Location:</span>
-            {{@rental.city}}
-          </div>
-          <div>
-            <span>Number of bedrooms:</span>
-            {{@rental.bedrooms}}
-          </div>
-</div>
+        <div>
+          <span>Location:</span>
+          {{@rental.city}}
+        </div>
+        <div>
+          <span>Number of bedrooms:</span>
+          {{@rental.bedrooms}}
+        </div>
+      </div>
 
-
-
-    </div></div>
+    </div>
+  </div>
 </div>

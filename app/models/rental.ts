@@ -26,5 +26,5 @@ export default class RentalModel extends Model {
     }
   }
 
-  static modelName = 'rental';
+  static modelName = 'rentals';
 }

@@ -7,7 +7,7 @@ export default class IndexRoute extends Route {
   @service store:any;
   async model() {
 
-    let res:Promise<Rental[]> = this.store.findAll('rental');
+    let res:Promise<Rental[]> = await this.store.findAll('rental');
     return res;
   }
 }

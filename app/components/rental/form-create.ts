@@ -17,7 +17,7 @@ export default class RentalForm extends Component {
   }
 
   @action
-  sendRental(event: Event) {
+  async sendRental(event: Event) {
     event.preventDefault();
     const form = event.target as HTMLFormElement;
     const formData = new FormData(form);
@@ -29,7 +29,7 @@ export default class RentalForm extends Component {
       }
     });
 
-    let post = this.store.createRecord('rental', {
+    let post = await this.store.createRecord('rental', {
       title: formValues['title'],
       image: formValues['image'],
       owner: formValues['owner'],
@@ -41,37 +41,12 @@ export default class RentalForm extends Component {
     });
     console.log();
 
-    post.save().then(()=>{this.router.transitionTo('index')});
-
+     post.save()
+     this.router.transitionTo('index');
 
   }
+
+
+
+
 }
-/*
-    //Transforms the key:values form(string) in JSON data
-    const jsonData = JSON.stringify(formValues);
-    console.log(jsonData);
-     fetch('http://localhost:3000/rentals', {
-  method: 'POST',
-  headers: {
-    'Content-Type': 'application/json'
-  },
-  body: jsonData
-})
-.then(response => {
-  if (!response.ok) {
-    throw new Error('Network response was not ok');
-  }
-  return response;
-})
-.then(data => {
-  console.log(data);
-})
-.catch(error => {
-  console.error('There was an error:', error);
-});
-
-
-
-
-    //console.log(formValues);
- */

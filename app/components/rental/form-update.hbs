@@ -1,0 +1,81 @@
+{{@model.title}}
+<form {{on "submit" this.updateRental}}>
+  <label class="m-4 flex justify-center items-center">
+    <span class="text-3xl font-semibold">Image:</span>
+    <input
+      type="url"
+      class="border-black border-2 rounded-md text-center border-solid"
+      name="image"
+      placeholder="Image URL"
+      value="{{@rental.image}}"
+    />
+  </label>
+  <label class="m-4 flex justify-center items-center">
+    <span class="text-3xl font-semibold">Title:</span>
+    <input
+      type="text"
+      class="border-black border-2 rounded-md text-center border-solid"
+      name="title"
+      placeholder="Title"
+      value="{{@rental.title}}"
+    />
+  </label>
+  <label class="m-4 flex justify-center items-center">
+    <span class="text-3xl font-semibold">Owner:</span>
+    <input
+      type="text"
+      class="border-black border-2 rounded-md text-center border-solid"
+      name="owner"
+      placeholder="Owner"
+      value="{{@rental.owner}}"
+    />
+  </label>
+  <label class="m-4 flex justify-center items-center">
+    <span class="text-3xl font-semibold">City:</span>
+    <input
+      type="text"
+      class="border-black border-2 rounded-md text-center border-solid"
+      name="city"
+      placeholder="City"
+      value="{{@rental.city}}"
+    />
+  </label>
+  <label class="m-4 flex justify-center items-center">
+    <span class="text-3xl font-semibold">Category:</span>
+    <select name="category">
+      {{#if (@rental.category "Community")}}
+        <option value="Community" selected>Community</option>
+      {{else}}
+        <option value="Community">Community</option>
+      {{/if}}
+      {{#if (@rental.category "Standalone")}}
+        <option value="Standalone" selected>Standalone</option>
+      {{else}}
+        <option value="Standalone">Standalone</option>
+      {{/if}}
+
+    </select>
+  </label>
+  <label class="m-4 flex justify-center items-center">
+    <span class="text-3xl font-semibold">Bedrooms:</span>
+    <input
+      type="number"
+      class="border-black border-2 rounded-md text-center border-solid"
+      name="bedrooms"
+      placeholder="Bedrooms"
+      value="{{@rental.bedrooms}}"
+    />
+  </label>
+  <label class="m-4 flex justify-center items-center">
+    <span class="text-3xl font-semibold">Description:</span>
+    <input
+      type="text"
+      class="border-black border-2 rounded-md text-center border-solid"
+      name="description"
+      placeholder="Description"
+      value="{{@rental.description}}"
+    />
+  </label>
+  <button type="submit">CREAR</button>
+
+</form>

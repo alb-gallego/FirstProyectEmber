@@ -41,4 +41,9 @@
     </div>
   </article>
 </div>
+<button type="button" class="text-white bg-red-600 border border-black" {{on "click" (fn this.deleteRental @rental)}}>DELETE RENTAL</button>
+<LinkTo @route="update-rental" @model={{@rental}}>
+
+<button type="button" class="text-white bg-green-600 border border-black" >UPDATE RENTAL</button>
+</LinkTo>
 </div>

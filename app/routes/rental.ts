@@ -8,7 +8,7 @@ export interface Rental {
   owner: string;
   city: string;
   category: string;
-  bedrooms: number;
+  bedrooms: string;
   image: string;
   description: string;
 }

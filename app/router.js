@@ -13,6 +13,6 @@ Router.map(function () {
   this.route('error', { path: '/*path' });
   this.route('prueba', {path:'/prueba'});
   this.route('create-rental',{path:'/create-rental'})
+  this.route('update-rental',{path:'/update-rental/:rental_id'})
 
-  this.route('prueba');
 });
