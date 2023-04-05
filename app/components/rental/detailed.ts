@@ -8,7 +8,7 @@ export default class RentalForm extends Component {
 
   @action
   async deleteRental(rental:any){
-    rental.deleteRecord();
+    await rental.deleteRecord();
     console.log(rental.isDeleted);
     await rental.save();
     this.router.transitionTo('index');

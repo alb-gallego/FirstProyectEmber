@@ -12,5 +12,5 @@ COPY . .
 RUN npm install
 
 # Construimos la aplicación Ember
-RUN npm start
+#RUN npm start
 
