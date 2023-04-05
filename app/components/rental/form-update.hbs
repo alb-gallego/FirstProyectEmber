@@ -1,5 +1,5 @@
 {{@model.title}}
-<form {{on "submit" this.updateRental}}>
+<form {{on "submit" this.updateRental}} class="bg-slate-300">
   <label class="m-4 flex justify-center items-center">
     <span class="text-3xl font-semibold">Image:</span>
     <input
@@ -76,6 +76,6 @@
       value="{{@rental.description}}"
     />
   </label>
-  <button type="submit">CREAR</button>
+  <button class="flex justify-center text-center items-center" type="submit">UPDATE</button>
 
 </form>

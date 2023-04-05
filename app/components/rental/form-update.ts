@@ -38,6 +38,8 @@ export default class RentalForm extends Component<RentalUpdateArgs> {
     this.rental.description = formValues['description']??'';
     rental.save();
    })
+   this.router.transitionTo('index');
+
   }
 
 }

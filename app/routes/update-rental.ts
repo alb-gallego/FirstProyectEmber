@@ -8,7 +8,6 @@ export default class UpdateRentalRoute extends Route {
 
   async model(params: { rental_id: string }) {
     const response:Promise<Rental> = await this.store.findRecord('rental', params.rental_id);
-    //res.then((data: any)=>console.log(data.attributes));
     const res = await response;
 
     return res;
