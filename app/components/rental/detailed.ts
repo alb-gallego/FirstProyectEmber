@@ -8,13 +8,22 @@ export default class RentalForm extends Component {
 
   @action
   async deleteRental(rental:any){
-    await rental.deleteRecord();
-    console.log(rental.isDeleted);
-    await rental.save();
-    this.router.transitionTo('index');
-    console.log("RENTAL BORRADO CORRECTAMENTE");
+    try {
+      const rentalD = await this.store.findRecord('rental', rental.id);
+      if (rentalD.isDeleted) {
+        console.log('El registro ya ha sido eliminado');
+        this.router.transitionTo('index');
+      }
+      rentalD.deleteRecord();
+      await rentalD.save();
+      this.router.transitionTo('index');
+    } catch (error) {
+      console.log(error);
+      console.log('RENTAL NO BORRADO');
+    }
 
-
+    // console.log(rental.isDeleted);
+    // await rentalD.save();
 
   }
 

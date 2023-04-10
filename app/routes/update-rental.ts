@@ -1,6 +1,6 @@
 import Route from '@ember/routing/route';
 import { service } from '@ember/service';
-import { Rental } from './rental';
+import Rental from '../models/rental';
 
 
 export default class UpdateRentalRoute extends Route {
