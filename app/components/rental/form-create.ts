@@ -41,7 +41,7 @@ export default class RentalForm extends Component {
     });
     console.log();
 
-     post.save()
+     await post.save()
      this.router.transitionTo('index');
 
   }

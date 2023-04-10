@@ -1,5 +1,5 @@
 import Component from '@glimmer/component';
-import { Rental } from 'super-rentals/routes/rental';
+import  Rental  from 'super-rentals/models/rental';
 
 interface RentalsFilterArgs {
   rentals: Rental[];
