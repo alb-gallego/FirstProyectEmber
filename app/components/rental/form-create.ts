@@ -29,7 +29,7 @@ export default class RentalForm extends Component {
       }
     });
 
-    let post = await this.store.createRecord('rental', {
+    let post =  this.store.createRecord('rental', {
       title: formValues['title'],
       image: formValues['image'],
       owner: formValues['owner'],
@@ -40,9 +40,15 @@ export default class RentalForm extends Component {
 
     });
     console.log();
+try {
+ await post.save()
+   this.router.transitionTo('index');
 
-     post.save()
-     this.router.transitionTo('index');
+} catch (error) {
+  console.log(error);
+  this.router.transitionTo('create-rental');
+
+}
 
   }
 
