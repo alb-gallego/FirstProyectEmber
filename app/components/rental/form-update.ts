@@ -25,7 +25,7 @@ export default class RentalForm extends Component<RentalUpdateArgs> {
       formValues[key] = value?.toString();
     });
 
-    await this.store
+     this.store
       .findRecord('rental', this.rental.id)
       .then((rental: any) => {
         this.rental.title = formValues['title'] ?? '';
