@@ -10,31 +10,21 @@ export default class RentalForm extends Component {
   @service router!: Router;
   @tracked errors: string[] = [];
 
-
-
   @action
   async sendRental(event: Event) {
     event.preventDefault();
     const form = event.target as HTMLFormElement;
     const formData = new FormData(form);
     const formValues: Record<string, string> = {};
-    let arrErrors: string[] = [];
-
 
     formData.forEach((value, key) => {
       formValues[key] = value.toString();
-
-      if (formValues[key] != null || undefined || '') {
-        this.errors = checkErrors(formValues, key, arrErrors);
-        console.log(this.errors);
-
-      }else{
-        arrErrors.push(`The ${key} cant be empty`);
-        //this.errors=arrErrors;
-      }
     });
+
+    this.errors = checkErrors(formValues);
+
     //If there are errors, it doesnt send data
-    if (this.errors.length>0) {
+    if (this.errors.length > 0) {
       return;
     }
     let post = this.store.createRecord('rental', {

@@ -13,7 +13,6 @@ interface RentalUpdateArgs {
 export default class RentalForm extends Component<RentalUpdateArgs> {
   @service store: any;
   @service router!: Router; // Agrega la propiedad router
-  @tracked hasErrors: boolean = false;
   @tracked errors: string[] = [];
 
   rental = this.args.rental;
@@ -21,27 +20,17 @@ export default class RentalForm extends Component<RentalUpdateArgs> {
   //{{on "click" (fn this.updateRental @rental)}}
   @action
   async updateRental(event: Event) {
-    this.hasErrors = false;
     event.preventDefault();
     const form = event.target as HTMLFormElement;
     const formData = new FormData(form);
     const formValues: Record<string, string> = {};
-    const arrErrors: string[] = [];
 
     formData.forEach((value, key) => {
-      formValues[key] = value?.toString();
-      if (formValues[key] != null || undefined || '') {
-        [this.errors, this.hasErrors] = checkErrors(formValues, key, arrErrors)
-          ? [this.errors, this.hasErrors]
-          : [[], this.hasErrors];
-        console.log(this.errors);
-      } else {
-        arrErrors.push(`The ${key} cant be empty`);
-        this.hasErrors = true;
-      }
+      formValues[key] = value.toString();
     });
-    if (this.hasErrors) {
-      console.log('DETECTA QUE HAY ERRORES');
+    this.errors = checkErrors(formValues);
+    //If there are errors, it doesnt send data
+    if (this.errors.length>0) {
       return;
     }
     this.store.findRecord('rental', this.rental.id).then((rental: any) => {
