@@ -10,10 +10,10 @@ export default function checkErrors(formValues: any, key: string, arrErrors: str
   }
   // If there are errors, return the array of error messages
   if (arrErrors.length > 0) {
-    return [arrErrors,true];
+    return arrErrors;
   }else{
     // Return an empty array if there are no errors
-    return [[],false];
+    return [];
   }
 }
 

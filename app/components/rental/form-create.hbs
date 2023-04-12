@@ -1,6 +1,6 @@
 
 <div class="flex justify-center items-center  flex-wrap mt-4 ">
-{{#if this.hasErrors}}
+{{#if  (not (is-empty this.errors))}}
   <div class="bg-red-200 p-4 mb-4">
     <h2 class="text-red-700 font-bold mb-2">Validation errors:</h2>
     {{#each this.errors as |error|}}

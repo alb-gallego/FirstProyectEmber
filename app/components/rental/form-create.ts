@@ -8,14 +8,12 @@ import checkErrors from 'super-rentals/utils/validation';
 export default class RentalForm extends Component {
   @service store: any;
   @service router!: Router;
-  @tracked hasErrors: boolean = false;
   @tracked errors: string[] = [];
 
 
 
   @action
   async sendRental(event: Event) {
-    this.hasErrors = false;
     event.preventDefault();
     const form = event.target as HTMLFormElement;
     const formData = new FormData(form);
@@ -27,18 +25,16 @@ export default class RentalForm extends Component {
       formValues[key] = value.toString();
 
       if (formValues[key] != null || undefined || '') {
-        [this.errors,this.hasErrors] = checkErrors(formValues, key, arrErrors)?[this.errors,true]:[this.errors,false];
+        this.errors = checkErrors(formValues, key, arrErrors);
         console.log(this.errors);
-        console.log(this.hasErrors);
 
       }else{
         arrErrors.push(`The ${key} cant be empty`);
         //this.errors=arrErrors;
-        this.hasErrors = true;
       }
     });
     //If there are errors, it doesnt send data
-    if (this.hasErrors) {
+    if (this.errors.length>0) {
       return;
     }
     let post = this.store.createRecord('rental', {
