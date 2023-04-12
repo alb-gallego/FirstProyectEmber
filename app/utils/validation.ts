@@ -1,14 +1,13 @@
 export default function checkErrors(
   formValues: any
 
-  //  arrErrors: string[]
 ) {
   let arrErrors: string[] = [];
 
-  const keys = Object.keys(formValues);
+  for (let key in formValues) {
 
-  for (let key in keys) {
     if (formValues[key] !== null && formValues[key]!== undefined && formValues[key]!=='') {
+
       if (key === 'bedrooms' && parseInt(formValues['bedrooms']) <= 0) {
         const message: string = `The number of ${key} must be greater than 0`;
         if (!arrErrors.includes(message)) {
@@ -19,9 +18,13 @@ export default function checkErrors(
         key !== 'bedrooms' &&
         key !== 'image'
       ) {
+        console.log(key);
+
         arrErrors.push(`The ${key} length must be greater than 5`);
       }
     } else {
+      console.log(key);
+
       arrErrors.push(`The ${key} cant be empty`);
       //this.errors=arrErrors;
     }
