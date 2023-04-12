@@ -3,6 +3,7 @@ import Router from '@ember/routing/router';
 import { service } from '@ember/service';
 import Component from '@glimmer/component';
 import { tracked } from '@glimmer/tracking';
+import checkErrors from 'super-rentals/utils/validation';
 
 export default class RentalForm extends Component {
   @service store: any;
@@ -10,24 +11,7 @@ export default class RentalForm extends Component {
   @tracked hasErrors: boolean = false;
   @tracked errors: string[] = [];
 
-  checkErrors(formValues: any, key: string, arrErrors: any[]) {
-    if (key==='bedrooms' && parseInt(formValues['bedrooms']) <= 0) {
-      const message:string = `The number of ${key} must be greater than 0`
-      if(!arrErrors.includes(message)){
-        arrErrors.push(message);
-      }
 
-    } else if (formValues[key].length < 5 && key !== 'bedrooms'&& key!=='image') {
-      arrErrors.push(`The ${key} length must be greater than 5`);
-    }
-    // If there are errors, return the array of error messages
-    if (arrErrors.length > 0) {
-      this.hasErrors = true;
-      return arrErrors;
-    }
-    // Return an empty array if there are no errors
-    return [];
-  }
 
   @action
   async sendRental(event: Event) {
@@ -36,20 +20,25 @@ export default class RentalForm extends Component {
     const form = event.target as HTMLFormElement;
     const formData = new FormData(form);
     const formValues: Record<string, string> = {};
-    const arrErrors: string[] = [];
+    let arrErrors: string[] = [];
+
+
     formData.forEach((value, key) => {
       formValues[key] = value.toString();
+
       if (formValues[key] != null || undefined || '') {
-        this.errors = this.checkErrors(formValues, key, arrErrors);
+        [this.errors,this.hasErrors] = checkErrors(formValues, key, arrErrors)?[this.errors,true]:[this.errors,false];
         console.log(this.errors);
+        console.log(this.hasErrors);
+
       }else{
         arrErrors.push(`The ${key} cant be empty`);
+        //this.errors=arrErrors;
         this.hasErrors = true;
       }
     });
     //If there are errors, it doesnt send data
     if (this.hasErrors) {
-      console.log('DETECTA QUE HAY ERRORES');
       return;
     }
     let post = this.store.createRecord('rental', {

@@ -1,3 +1,14 @@
+<div class="flex justify-center items-center  flex-wrap mt-4 ">
+{{#if this.hasErrors}}
+  <div class="bg-red-200 p-4 mb-4">
+    <h2 class="text-red-700 font-bold mb-2">Validation errors:</h2>
+    {{#each this.errors as |error|}}
+      <p class="text-red-700">{{error}}</p>
+    {{/each}}
+  </div>
+{{/if}}
+</div>
+
 <div class="flex justify-center items-center flex-wrap mt-4 ">
 <form {{on "submit" this.updateRental}} class="bg-slate-300 rounded-md">
   <label class="m-4 flex justify-center items-center">
