@@ -10,7 +10,7 @@ export default class IndexRoute extends Route {
 
   async model() {
 
-    let res:Promise<Rental[]> = await this.store.findAll('rental');
+    let res:Rental[] = await this.store.findAll('rental');
     console.log('Entra en ruta index');
 
     return res;

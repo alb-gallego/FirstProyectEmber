@@ -50,10 +50,10 @@
 <div class="flex flex-wrap my-5  flex-row items-center justify-center">
     <button
       type="button"
-      class="text-white bg-red-600 border mx-5 border-black rounded-md"
+      class="text-white bg-red-600 border mx-5 p-5 border-black rounded-md"
       {{on "click" (fn this.deleteRental @rental)}}
     >
-      <div class="p-5">DELETE RENTAL</div>
+DELETE RENTAL
     </button>
 
     <LinkTo @route="update-rental" @model={{@rental}}>

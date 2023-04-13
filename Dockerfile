@@ -11,6 +11,5 @@ COPY . .
 # Instalamos las dependencias de Node.js
 RUN npm install
 
-# Construimos la aplicación Ember
-#RUN npm start
+
 
